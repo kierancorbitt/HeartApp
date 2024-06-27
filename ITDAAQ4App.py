@@ -1,14 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
 from sklearn.preprocessing import StandardScaler
 
-# Load the trained model
-model = joblib.load('random_forest_model.pkl')
-
-# Load the scaler used during training
-scaler = joblib.load('scaler.pkl')
 
 # Define the input fields for the app
 def get_user_input():
