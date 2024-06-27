@@ -56,7 +56,7 @@ def main():
 
     st.subheader("Prediction")
     heart_disease = "Yes" if prediction[0] == 1 else "No"
-    st.write(f"Heart Disease: {heart_disease}")
+    st.write(f"Heart Disease:")
     
     st.subheader("Prediction Probability")
     st.write(f"Probability of having heart disease: ")
