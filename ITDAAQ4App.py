@@ -18,7 +18,7 @@ def get_user_input():
     ca = st.sidebar.number_input('Number of Major Vessels Colored by Fluoroscopy', min_value=0, max_value=4)
     thal = st.sidebar.selectbox('Thalassemia', ('Normal', 'Fixed Defect', 'Reversible Defect', 'Unknown'))
 
-    user_data = {'age': age,
+    user_input = {'age': age,
                  'sex': 1 if sex == 'Male' else 0,
                  'cp': cp,
                  'trestbps': trestbps,
@@ -32,22 +32,18 @@ def get_user_input():
                  'ca': ca,
                  'thal': thal}
     
-    features = pd.DataFrame(user_data, index=[0])
+    features = pd.DataFrame(user_input, index=[0])
     return features
 
-# Main function
 def main():
     st.title("Heart Disease Prediction")
     st.write("Enter the details of the patient.")
 
-    # Get user input
     user_input = get_user_input()
-
-    # Display user input
+    
     st.subheader("Patient Details")
     st.write(user_input)
 
-    # One-hot encode categorical features
     cp_mapping = {'Typical Angina': 0, 'Atypical Angina': 1, 'Non-anginal Pain': 2, 'Asymptomatic': 3}
     slope_mapping = {'Upsloping': 0, 'Flat': 1, 'Downsloping': 2}
     thal_mapping = {'Normal': 1, 'Fixed Defect': 2, 'Reversible Defect': 3, 'Unknown': 0}
@@ -58,12 +54,9 @@ def main():
     user_input['thal'] = user_input['thal'].map(thal_mapping)
     user_input['restecg'] = user_input['restecg'].map(restecg_mapping)
 
-
-    # Make prediction
     prediction = model.predict(scaled_data)
     prediction_proba = model.predict_proba(scaled_data)
 
-    # Display prediction
     st.subheader("Prediction")
     heart_disease = "Yes" if prediction[0] == 1 else "No"
     st.write(f"Heart Disease: {heart_disease}")
@@ -72,6 +65,6 @@ def main():
     st.write(f"Probability of having heart disease: ")
     st.write(f"Probability of being healthy: ")
 
-# Run the app
+# Running the app
 if __name__ == '__main__':
     main()
