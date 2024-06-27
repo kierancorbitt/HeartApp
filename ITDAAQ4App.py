@@ -3,21 +3,21 @@ import pandas as pd
 import numpy as np
 
 def get_user_input():
-    age = st.sidebar.number_input('Age', min_value=1, max_value=100, value=30)
+    
+    age = st.sidebar.number_input('Age', min_value=1, max_value=100)
     sex = st.sidebar.selectbox('Sex', ('Male', 'Female'))
     cp = st.sidebar.selectbox('Chest Pain Type', ('Typical Angina', 'Atypical Angina', 'Non-anginal Pain', 'Asymptomatic'))
-    trestbps = st.sidebar.number_input('Resting Blood Pressure (mm Hg)', min_value=50, max_value=200, value=120)
-    chol = st.sidebar.number_input('Serum Cholesterol (mg/dl)', min_value=100, max_value=500, value=200)
+    trestbps = st.sidebar.number_input('Resting Blood Pressure (mm Hg)', min_value=50, max_value=200)
+    chol = st.sidebar.number_input('Serum Cholesterol (mg/dl)', min_value=100, max_value=500)
     fbs = st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl', ('True', 'False'))
     restecg = st.sidebar.selectbox('Resting Electrocardiographic Results', ('Normal', 'Abnormal', 'Ventricular Hypertrophy'))
-    thalach = st.sidebar.number_input('Maximum Heart Rate Achieved', min_value=50, max_value=220, value=150)
+    thalach = st.sidebar.number_input('Maximum Heart Rate Achieved', min_value=50, max_value=220)
     exang = st.sidebar.selectbox('Exercise Induced Angina', ('Yes', 'No'))
-    oldpeak = st.sidebar.number_input('ST Depression Induced by Exercise', min_value=0.0, max_value=10.0, value=1.0)
+    oldpeak = st.sidebar.number_input('ST Depression Induced by Exercise', min_value=0.0, max_value=10.0)
     slope = st.sidebar.selectbox('Slope of the Peak Exercise ST Segment', ('Upsloping', 'Flat', 'Downsloping'))
-    ca = st.sidebar.number_input('Number of Major Vessels Colored by Fluoroscopy', min_value=0, max_value=4, value=0)
+    ca = st.sidebar.number_input('Number of Major Vessels Colored by Fluoroscopy', min_value=0, max_value=4)
     thal = st.sidebar.selectbox('Thalassemia', ('Normal', 'Fixed Defect', 'Reversible Defect', 'Unknown'))
 
-    # Convert input data to a dataframe
     user_data = {'age': age,
                  'sex': 1 if sex == 'Male' else 0,
                  'cp': cp,
@@ -38,7 +38,7 @@ def get_user_input():
 # Main function
 def main():
     st.title("Heart Disease Prediction")
-    st.write("Enter the details of the patient to predict the likelihood of heart disease.")
+    st.write("Enter the details of the patient.")
 
     # Get user input
     user_input = get_user_input()
@@ -69,8 +69,8 @@ def main():
     st.write(f"Heart Disease: {heart_disease}")
     
     st.subheader("Prediction Probability")
-    st.write(f"Probability of having heart disease: {prediction_proba[0][1]:.2f}")
-    st.write(f"Probability of being healthy: {prediction_proba[0][0]:.2f}")
+    st.write(f"Probability of having heart disease: ")
+    st.write(f"Probability of being healthy: ")
 
 # Run the app
 if __name__ == '__main__':
