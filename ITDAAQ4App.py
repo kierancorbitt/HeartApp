@@ -54,9 +54,6 @@ def main():
     user_input['thal'] = user_input['thal'].map(thal_mapping)
     user_input['restecg'] = user_input['restecg'].map(restecg_mapping)
 
-    prediction = model.predict(scaled_data)
-    prediction_proba = model.predict_proba(scaled_data)
-
     st.subheader("Prediction")
     heart_disease = "Yes" if prediction[0] == 1 else "No"
     st.write(f"Heart Disease: {heart_disease}")
