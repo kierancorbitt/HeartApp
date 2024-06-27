@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler
 
-
-# Define the input fields for the app
 def get_user_input():
     age = st.sidebar.number_input('Age', min_value=1, max_value=100, value=30)
     sex = st.sidebar.selectbox('Sex', ('Male', 'Female'))
@@ -61,8 +58,6 @@ def main():
     user_input['thal'] = user_input['thal'].map(thal_mapping)
     user_input['restecg'] = user_input['restecg'].map(restecg_mapping)
 
-    # Scaling the input data
-    scaled_data = scaler.transform(user_input)
 
     # Make prediction
     prediction = model.predict(scaled_data)
